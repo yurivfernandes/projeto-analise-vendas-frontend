@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navigation from './components/layout/Navigation';
 import LoginForm from './components/auth/LoginForm';
+import RegisterForm from './components/auth/RegisterForm';
 import WelcomeScreen from './components/home/WelcomeScreen';
 import BasicRegistration from './components/registration/BasicRegistration';
 import SalesPersonRegistration from './components/registration/SalesPersonRegistration';
@@ -16,7 +17,15 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   if (!isAuthenticated) {
-    return <LoginForm onLogin={() => setIsAuthenticated(true)} />;
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/register" element={<RegisterForm />} />
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        </Routes>
+      </BrowserRouter>
+    );
   }
 
   return (

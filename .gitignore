@@ -1,1 +1,18 @@
-node_modules
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Build output
+dist/
+build/
+
+# Miscellaneous
+.DS_Store
+*.pem
